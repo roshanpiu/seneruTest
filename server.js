@@ -27,13 +27,26 @@ app.post('/getSvg', function(req, res) {
             return console.log(err);
         }
         console.log("The file was saved!");
-        createSvgFromXsd();
-        var img = fs.readFileSync('xmlSchema.svg');
-        res.writeHead(200, {
-            'Content-Type': 'image/svg+xml'
-        });
-        res.end(img, 'binary');
 
+        child = exec('java -jar dist/lib/xsdvi.jar xmlSchema',
+            function(error, stdout, stderr) {
+                console.log('stdout: ' + stdout);
+                console.log('stderr: ' + stderr);
+                if (error !== null) {
+                    console.log('exec error: ' + error);
+                    return;
+                }
+                fs.readFile('xmlSchema.svg', function read(err, img) {
+                    if (error !== null) {
+                        console.log('exec error: ' + error);
+                        return;
+                    }
+                    res.writeHead(200, {
+                        'Content-Type': 'image/svg+xml'
+                    });
+                    res.end(img, 'binary');
+                });
+            });
     });
 });
 
@@ -57,15 +70,17 @@ app.get('/getDbStructure', function(req, res) {
                             error: err
                         });
                     } else {
-                        
+
                         tablesFields[table] = fields;
-                        
-                        if(tables.length == getAssociateArrayLength(tablesFields)){
+
+                        if (tables.length == getAssociateArrayLength(tablesFields)) {
                             console.log(tablesFields);
-                            database.tables = JSON.parse(JSON.stringify(tablesFields));    
-                            res.json({database : database}); 
+                            database.tables = JSON.parse(JSON.stringify(tablesFields));
+                            res.json({
+                                database: database
+                            });
                         }
- 
+
                     }
                 })
 
@@ -97,18 +112,6 @@ app.listen(port, function() {
     console.log("The server is running on port " + port);
 });
 
-function createSvgFromXsd() {
-    child = exec('java -jar dist/lib/xsdvi.jar xmlSchema',
-        function(error, stdout, stderr) {
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + stderr);
-            if (error !== null) {
-                console.log('exec error: ' + error);
-            }
-        });
-}
-
-
 
 function getTables(query, callback) {
     pool.getConnection(function(err, connection) {
@@ -133,7 +136,7 @@ function getTables(query, callback) {
 function getFields(table, callback) {
     pool.getConnection(function(err, connection) {
         connection.query("DESCRIBE " + table, function(err, rows) {
-            
+
             connection.release();
             if (err) {
                 throw err;
@@ -152,9 +155,10 @@ function getFields(table, callback) {
 }
 
 function getAssociateArrayLength(obj) {
-    var size = 0, key;
+    var size = 0,
+        key;
     for (key in obj) {
         if (obj.hasOwnProperty(key)) size++;
     }
-    return size;    
+    return size;
 }
