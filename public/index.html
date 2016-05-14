@@ -40,7 +40,7 @@
                            <div ng-controller="DBTreeViewController">  
                                 <div class="item item-divider">{{name}}</div>
                                 <div class="item item-text-wrap" style="font-size: 12px;">
-                                    <json-tree object="databaseTree" expanded="true"></json-tree>
+                                    <json-tree ng-show="showDBTree" object="databaseTree" expanded="true"></json-tree>
                                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                     <br><br><br><br><br><br><br>
@@ -65,7 +65,7 @@
                            <div ng-controller="XsdTreeViewController"> 
                                 <div class="item item-divider">{{name}}</div>
                                 <div class="item item-text-wrap" style="font-size: 12px;">
-                                    <json-tree object="xsdTree" expanded="true"></json-tree>
+                                    <json-tree ng-show="showXsdTree" object="xsdTree" expanded="true"></json-tree>
                                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                                     <br><br><br><br><br><br><br>

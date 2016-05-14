@@ -28,7 +28,14 @@ angular.module('starter', ['ionic','angular-json-tree'])
     
     $scope.databaseTree = {};
     
+    $scope.showDBTree = false;
+    
     $http.get('http://senerutest.azurewebsites.net/getDbStructure').then(function (data) {
+        
+        if(data.data){
+            $scope.showDBTree = true;
+        }
+        
         console.log(data.data);
         $scope.databaseTree = data.data;
     });
@@ -70,7 +77,14 @@ angular.module('starter', ['ionic','angular-json-tree'])
     var Tree = [];
     $scope.xsdTree = {};
     
+    $scope.showXsdTree = false;
+    
     $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function (data) {
+        
+        if(data.data){
+            $scope.showXsdTree = true;
+        }
+        
         var parsedXml = XmlToJson.parseXml(data.data);
         //Tree = createTreeArray(XmlToJson.xmlToJson(parsedXml));
         $scope.xsdTree = XmlToJson.xmlToJson(parsedXml);
