@@ -28,7 +28,7 @@ angular.module('starter', ['ionic','angular-json-tree'])
     
     $scope.databaseTree = {};
     
-    $http.get('http://senerubackend.azurewebsites.net/getDbStructure').then(function (data) {
+    $http.get('http://senerutest.azurewebsites.net/getDbStructure').then(function (data) {
         console.log(data.data);
         $scope.databaseTree = data.data;
     });
@@ -70,7 +70,7 @@ angular.module('starter', ['ionic','angular-json-tree'])
     var Tree = [];
     $scope.xsdTree = {};
     
-    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruBackEnd/master/xmlSchema.xsd').then(function (data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function (data) {
         var parsedXml = XmlToJson.parseXml(data.data);
         //Tree = createTreeArray(XmlToJson.xmlToJson(parsedXml));
         $scope.xsdTree = XmlToJson.xmlToJson(parsedXml);
