@@ -46,7 +46,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
 
 
-    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruBackEnd/master/xmlSchema.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
         var xmlString = data.data;
 
         var req = {
