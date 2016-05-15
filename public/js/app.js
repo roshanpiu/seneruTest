@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
     $scope.name = "XSD Diagram";
     $scope.diagramSrc = "";
 
-    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/sampleXsds/skupina.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/sampleXsds/xmlSchema.xsd').then(function(data) {
         var xmlString = data.data;
 
         var req = {
@@ -78,7 +78,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
     $scope.showXsdTree = false;
 
-    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/sampleXsds/skupina.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/sampleXsds/xmlSchema.xsd').then(function(data) {
 
         if (data.data) {
             $scope.showXsdTree = true;
