@@ -43,6 +43,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
 .controller('XsdDiagramController', function($scope, $http) {
     $scope.name = "XSD Diagram";
+    $scope.diagramSrc = "";
 
     $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
         var xmlString = data.data;
