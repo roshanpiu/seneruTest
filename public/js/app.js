@@ -78,7 +78,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
     $scope.showXsdTree = false;
 
-    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/sampleXsds/xmlSchema.xsd').then(function(data) {
 
         if (data.data) {
             $scope.showXsdTree = true;
