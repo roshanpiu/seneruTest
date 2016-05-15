@@ -44,8 +44,6 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 .controller('XsdDiagramController', function($scope, $http) {
     $scope.name = "XSD Diagram";
 
-    document.getElementById("diagramIframe").;
-
     $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
         var xmlString = data.data;
 
