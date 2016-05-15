@@ -61,7 +61,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
             
             
             console.log(res);
-            $scope.diagramSrc = 'data:image/svg+xml,' + encodeURI(res.data);
+            document.getElementById("diagramIframe").src = 'data:image/svg+xml,' + encodeURI(res.data);
 ;
             
         }, function() {});
