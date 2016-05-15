@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
     $scope.showDBTree = false;
 
-    $http.get('senerutest.herokuapp.com/getDbStructure').then(function(data) {
+    $http.get('https://senerutest.herokuapp.com/getDbStructure').then(function(data) {
 
         if (data.data) {
             $scope.showDBTree = true;
@@ -46,12 +46,12 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
 
 
-    $http.get('raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
         var xmlString = data.data;
 
         var req = {
             method: 'POST',
-            url: 'senerutest.herokuapp.com/getSvg',
+            url: 'https://senerutest.herokuapp.com/getSvg',
             headers: {
                 'Content-Type': 'application/xml'
             },
@@ -74,7 +74,7 @@ angular.module('starter', ['ionic', 'angular-json-tree'])
 
     $scope.showXsdTree = false;
 
-    $http.get('raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
+    $http.get('https://raw.githubusercontent.com/roshanpiu/seneruTest/master/xmlSchema.xsd').then(function(data) {
 
         if (data.data) {
             $scope.showXsdTree = true;
